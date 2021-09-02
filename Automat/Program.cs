@@ -6,6 +6,7 @@ namespace Automat
     {
         static void Main(string[] args)
         {
+            Wares.AddToList();
             for (; ; )
                 Wares.Logic();
         }

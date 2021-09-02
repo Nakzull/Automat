@@ -23,19 +23,29 @@ namespace Automat
         static Wares fruit = new Wares("Fruit", 13, 12);
         static int userMoney = 0;
         static int moneyInMachine = 0;
+        static List<Wares> wares = new List<Wares>();
+        
+        public static void AddToList()
+        {
+            wares.Add(soda);
+            wares.Add(icetea);
+            wares.Add(chocolate);
+            wares.Add(candy);
+            wares.Add(fruit);
+        }
         public static void Logic()
-        {            
+        {
+            
             Console.WriteLine(" ===================================================================================================================");
             Console.WriteLine("|                                                                                                                   |");
             Console.WriteLine("|                                            Vending machine                                                        |");
             Console.WriteLine("|                                                                                                                   |");
             Console.WriteLine(" ===================================================================================================================");
             Console.WriteLine("                                                                                                     Money count: {0}        ", userMoney);
-            Console.WriteLine("1. {0} price: {1}kr stock: {2}", soda.name, soda.price, soda.stock);
-            Console.WriteLine("2. {0} price: {1}kr stock: {2}", icetea.name, icetea.price, icetea.stock);
-            Console.WriteLine("3. {0} price: {1}kr stock: {2}", chocolate.name, chocolate.price, chocolate.stock);
-            Console.WriteLine("4. {0} price: {1}kr stock: {2}", candy.name, candy.price, candy.stock);
-            Console.WriteLine("5. {0} price: {1}kr stock: {2}", fruit.name, fruit.price, fruit.stock);
+            for (int i = 0; i < wares.Count; i++)
+            {
+                Console.WriteLine((i + 1) + " {0} price: {1}kr stock: {2}", wares[i].name, wares[i].price, wares[i].stock);
+            }
             Console.WriteLine("\n9. Insert money");
             Console.WriteLine("0. Administration");
             int choice = Convert.ToInt32(Console.ReadLine());
@@ -192,11 +202,10 @@ namespace Automat
                         {
                             Console.Clear();
                             Console.WriteLine("Welcome to administration. Which item do you wish to adjust?");
-                            Console.WriteLine("1. {0} stock: {1} price: {2}", soda.name, soda.price, soda.stock);
-                            Console.WriteLine("2. {0} stock: {1} price: {2}", icetea.name, icetea.price, icetea.stock);
-                            Console.WriteLine("3. {0} stock: {1} price: {2}", chocolate.name, chocolate.price, chocolate.stock);
-                            Console.WriteLine("4. {0} stock: {1} price: {2}", candy.name, candy.price, candy.stock);
-                            Console.WriteLine("5. {0} stock: {1} price: {2}", fruit.name, fruit.price, fruit.stock);
+                            for (int i = 0; i < wares.Count; i++)
+                            {
+                                Console.WriteLine((i + 1) + " {0} price: {1}kr stock: {2}", wares[i].name, wares[i].price, wares[i].stock);
+                            }
                             Console.WriteLine("6. Remove money in machine                                                                 Coin count: {0}", moneyInMachine);
                             Console.WriteLine("9. Return to previous menu");
                             int adminChoice = Convert.ToInt32(Console.ReadLine());
