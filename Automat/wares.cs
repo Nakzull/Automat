@@ -16,6 +16,7 @@ namespace Automat
             price = Price;
             stock = Stock;
         }
+        // Here I create my objects from my Wares class and I create variables used to count the money the user inserted and how much money is in the machine..
         static Wares soda = new Wares("Soda", 20, 10);
         static Wares icetea = new Wares("Icetea", 15, 8);
         static Wares chocolate = new Wares("Chocolate", 22, 5);
@@ -35,7 +36,7 @@ namespace Automat
         }
         public static void Logic()
         {
-            
+            // This part prints my menu of items to the console along with asking for the users choice and storing that for later.
             Console.WriteLine(" ===================================================================================================================");
             Console.WriteLine("|                                                                                                                   |");
             Console.WriteLine("|                                            Vending machine                                                        |");
@@ -49,9 +50,12 @@ namespace Automat
             Console.WriteLine("\n9. Insert money");
             Console.WriteLine("0. Administration");
             int choice = Convert.ToInt32(Console.ReadLine());
+            // This part is cycling through the user choice made earlier to see which part of the vending machine should be used.
             switch (choice)
             {
                 case 1:
+                    // First I check to see if the item is in stock then I check if the user have inserted enough money to buy the product
+                    // and then I check if the user gets any change back.
                     Console.Clear();
                     if (soda.stock > 0)
                     {
@@ -165,6 +169,7 @@ namespace Automat
                     {
                         for (; ; )
                         {
+                            // This part lets the user insert money into the machine.
                             Console.Clear();
                             Console.WriteLine("Which coin do you wanna insert?");
                             Console.WriteLine("                                                                                                     Money count: {0}\n1. 1kr\n2. 2kr\n5. 5kr\n10. 10kr\n\n0. Done inserting money", userMoney);
@@ -200,6 +205,7 @@ namespace Automat
                     {
                         for (; ; )
                         {
+                            // This is the menu for the administration where an admin can change names, prices and stock of each item or remvoe money from the machine.
                             Console.Clear();
                             Console.WriteLine("Welcome to administration. Which item do you wish to adjust?");
                             for (int i = 0; i < wares.Count; i++)
